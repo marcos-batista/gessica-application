@@ -4,7 +4,7 @@ public interface DataObjectResourceController<DATAOBJECT> extends ResourceContro
 	
 	public DATAOBJECT doGet();
 
-	public DATAOBJECT doGet(Integer id);
+	public DATAOBJECT doGet(Object id);
 	
 	public DATAOBJECT doPost(DATAOBJECT dataObject);
 	

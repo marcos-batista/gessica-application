@@ -16,11 +16,11 @@ public abstract class GessicaDataObjectResourceController<DATAOBJECT> implements
 	}
 
 	@Override
-	public DATAOBJECT doGet(Integer id) {
+	public DATAOBJECT doGet(Object id) {
 		return findById(id);
 	}
 	
-	protected DATAOBJECT findById(Integer id) {
+	protected DATAOBJECT findById(Object id) {
 		return getService().findById(id);
 	}
 	

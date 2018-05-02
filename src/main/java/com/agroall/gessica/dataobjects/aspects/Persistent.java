@@ -1,9 +1,9 @@
 package com.agroall.gessica.dataobjects.aspects;
 
-public interface Persistent {
+public interface Persistent<IDTYPE> {
 	
-	public Integer getId();
+	public IDTYPE getId();
 	
-	public void setId(Integer id);
+	public void setId(IDTYPE id);
 	
 }

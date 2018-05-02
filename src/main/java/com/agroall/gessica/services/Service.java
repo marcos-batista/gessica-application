@@ -12,7 +12,7 @@ public interface Service<DATAOBJECT> {
 	
 	public void delete(DATAOBJECT dataObject);
 	
-	public DATAOBJECT findById(Integer id);
+	public DATAOBJECT findById(Object id);
 	
 	public Collection<DATAOBJECT> listAll();
 	

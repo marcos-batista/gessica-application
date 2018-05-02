@@ -32,7 +32,7 @@ public abstract class GessicaService<DATAOBJECT> implements Service<DATAOBJECT> 
 		getRepository().delete_(dataObject);
 	}
 	
-	public DATAOBJECT findById(Integer id) {
+	public DATAOBJECT findById(Object id) {
 		return getRepository().findById_(id);
 	}
 	
