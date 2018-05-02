@@ -4,14 +4,14 @@ import java.util.Collection;
 
 public interface Repository {
 	
-	public <DATAOBJECT> DATAOBJECT insert(DATAOBJECT dataObject);
+	public <DATAOBJECT> DATAOBJECT insert_(DATAOBJECT dataObject);
 	
-	public <DATAOBJECT> DATAOBJECT update(DATAOBJECT dataObject);
+	public <DATAOBJECT> DATAOBJECT update_(DATAOBJECT dataObject);
 	
-	public <DATAOBJECT> void delete(DATAOBJECT dataObject);
+	public <DATAOBJECT> void delete_(DATAOBJECT dataObject);
 	
-	public <DATAOBJECT> DATAOBJECT findById(Object id);
+	public <DATAOBJECT> DATAOBJECT findById_(Object id);
 	
-	public <DATAOBJECT> Collection<DATAOBJECT> listAll();
+	public <DATAOBJECT> Collection<DATAOBJECT> listAll_();
 	
 }

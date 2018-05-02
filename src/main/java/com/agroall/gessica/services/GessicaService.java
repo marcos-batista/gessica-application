@@ -2,7 +2,7 @@ package com.agroall.gessica.services;
 
 import java.util.Collection;
 
-import com.agroall.gessica.repositories.GessicaRepository;
+import com.agroall.gessica.repositories.FakeRepository;
 import com.agroall.gessica.repositories.Repository;
 
 public abstract class GessicaService<DATAOBJECT> implements Service<DATAOBJECT> {
@@ -15,29 +15,29 @@ public abstract class GessicaService<DATAOBJECT> implements Service<DATAOBJECT> 
 	}
 	
 	protected Repository factoryRepository() {
-		return new GessicaRepository();
+		return new FakeRepository();
 	}
 	
 	public abstract DATAOBJECT factoryNewDataObject();
 	
 	public DATAOBJECT insert(DATAOBJECT dataObject) {
-		return getRepository().insert(dataObject);
+		return getRepository().insert_(dataObject);
 	}
 	
 	public DATAOBJECT update(DATAOBJECT dataObject) {
-		return getRepository().update(dataObject);
+		return getRepository().update_(dataObject);
 	}
 	
 	public void delete(DATAOBJECT dataObject) {
-		getRepository().delete(dataObject);
+		getRepository().delete_(dataObject);
 	}
 	
 	public DATAOBJECT findById(Integer id) {
-		return getRepository().findById(id);
+		return getRepository().findById_(id);
 	}
 	
 	public Collection<DATAOBJECT> listAll() {
-		return getRepository().listAll();
+		return getRepository().listAll_();
 	}
 	
 	

@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 import com.agroall.gessica.dataobjects.aspects.Persistent;
 
-public class GessicaRepository implements Repository {
+public class FakeRepository implements Repository {
 	
 	private Persistent dataObjectScope;
 	
@@ -26,7 +26,7 @@ public class GessicaRepository implements Repository {
 		this.dataObjectScope = null;
 	}
 	
-	public <DATAOBJECT> DATAOBJECT insert(DATAOBJECT dataObject) {
+	public <DATAOBJECT> DATAOBJECT insert_(DATAOBJECT dataObject) {
 		setDataObjectScope((Persistent) dataObject);
 		setNewId(getDataObjectScope());
 		getDataObjectCollection().add(dataObject);
@@ -51,7 +51,7 @@ public class GessicaRepository implements Repository {
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public <DATAOBJECT> DATAOBJECT findById(Object id) {
+	public <DATAOBJECT> DATAOBJECT findById_(Object id) {
 		//if(getDataObjectCollection().isEmpty()) return null;
 		Collection<? extends Persistent> dataObjectCollection = getDataObjectCollection();
 		Persistent dataObject = dataObjectCollection.stream().filter(o -> o.getId().equals(id)).findFirst().get();
@@ -60,11 +60,11 @@ public class GessicaRepository implements Repository {
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public <DATAOBJECT> DATAOBJECT update(DATAOBJECT dataObject) {
+	public <DATAOBJECT> DATAOBJECT update_(DATAOBJECT dataObject) {
 		
 		setDataObjectScope((Persistent) dataObject);
 		
-		Persistent oldDataObjectPersistent = findById(getDataObjectScope().getId());
+		Persistent oldDataObjectPersistent = findById_(getDataObjectScope().getId());
 		Persistent newDataObjectPersistent = getDataObjectScope();
 		
 		try
@@ -123,7 +123,7 @@ public class GessicaRepository implements Repository {
 	}
 	
 	@Override
-	public <DATAOBJECT> void delete(DATAOBJECT dataObject) {
+	public <DATAOBJECT> void delete_(DATAOBJECT dataObject) {
 		setDataObjectScope((Persistent) dataObject);
 		delete(getDataObjectScope());
 		resetDataObjectScope();
@@ -140,7 +140,7 @@ public class GessicaRepository implements Repository {
 	}
 	
 	@Override
-	public <DATAOBJECT> Collection<DATAOBJECT> listAll() {
+	public <DATAOBJECT> Collection<DATAOBJECT> listAll_() {
 		return getDataObjectCollection();
 	}
 	

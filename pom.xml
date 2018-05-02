@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>marcosbatista.courses.pucminasvirtual.archsoftware.tcc</groupId>
 	<artifactId>gessica-application</artifactId>
-	<version>3.1.1-SNAPSHOT</version>
+	<version>4.0.0-SNAPSHOT-MONGODB</version>
 	<packaging>jar</packaging>
 	<name>gessica-application</name>
 	
