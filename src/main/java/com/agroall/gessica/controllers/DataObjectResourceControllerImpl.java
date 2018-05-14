@@ -2,7 +2,7 @@ package com.agroall.gessica.controllers;
 
 import com.agroall.gessica.services.Service;
 
-public abstract class GessicaDataObjectResourceController<DATAOBJECT> implements DataObjectResourceController<DATAOBJECT> {
+public abstract class DataObjectResourceControllerImpl<DATAOBJECT> implements DataObjectResourceController<DATAOBJECT> {
 	
 	protected abstract Service<DATAOBJECT> getService();
 	
@@ -16,11 +16,11 @@ public abstract class GessicaDataObjectResourceController<DATAOBJECT> implements
 	}
 
 	@Override
-	public DATAOBJECT doGet(Object id) {
+	public DATAOBJECT doGet(String id) {
 		return findById(id);
 	}
 	
-	protected DATAOBJECT findById(Object id) {
+	protected DATAOBJECT findById(String id) {
 		return getService().findById(id);
 	}
 	
@@ -34,7 +34,7 @@ public abstract class GessicaDataObjectResourceController<DATAOBJECT> implements
 	}
 
 	@Override
-	public DATAOBJECT doPut(DATAOBJECT dataObject) {
+	public DATAOBJECT doPut(String id, DATAOBJECT dataObject) {
 		return update(dataObject);
 	}
 	

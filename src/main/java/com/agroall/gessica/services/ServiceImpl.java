@@ -5,7 +5,7 @@ import java.util.Collection;
 import com.agroall.gessica.repositories.FakeRepository;
 import com.agroall.gessica.repositories.Repository;
 
-public abstract class GessicaService<DATAOBJECT> implements Service<DATAOBJECT> {
+public abstract class ServiceImpl<DATAOBJECT> implements Service<DATAOBJECT> {
 	
 	private Repository repository;
 	
@@ -38,6 +38,16 @@ public abstract class GessicaService<DATAOBJECT> implements Service<DATAOBJECT> 
 	
 	public Collection<DATAOBJECT> listAll() {
 		return getRepository().listAll_();
+	}
+	
+	protected final void disableOperation(DATAOBJECT dataObject) {
+		if(dataObject == null) {
+			dataObject = factoryNewDataObject();
+		}
+		throw new RuntimeException(
+			"This operation is not enabled for objects of type " +
+			dataObject.getClass().getSimpleName()
+		);
 	}
 	
 	

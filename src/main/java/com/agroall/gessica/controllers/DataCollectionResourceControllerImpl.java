@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import com.agroall.gessica.services.Service;
 
-public abstract class GessicaDataCollectionResourceController<DATAOBJECT> implements DataCollectionResourceController<DATAOBJECT> {
+public abstract class DataCollectionResourceControllerImpl<DATAOBJECT> implements DataCollectionResourceController<DATAOBJECT> {
 	
 	protected abstract Service<DATAOBJECT> getService();
 	

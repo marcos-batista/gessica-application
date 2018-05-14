@@ -1,7 +1,5 @@
 package com.agroall.gessica.dataobjects;
 
-import com.agroall.gessica.dataobjects.Produto;
-
 public class ProdutoEstoque extends Produto {
 	
 	private int quantidadeEstoque;
