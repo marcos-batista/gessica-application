@@ -24,12 +24,29 @@ public abstract class ServiceImpl<DATAOBJECT> implements Service<DATAOBJECT> {
 		return getRepository().insert_(dataObject);
 	}
 	
+	protected void validateBeforeInsert(DATAOBJECT dataObject) {
+		validateBeforeInsertOrUpdate(dataObject);
+	}
+	
 	public DATAOBJECT update(DATAOBJECT dataObject) {
 		return getRepository().update_(dataObject);
 	}
 	
+	protected void validateBeforeUpdate(DATAOBJECT dataObject) {
+		validateBeforeInsertOrUpdate(dataObject);
+	}
+	
+	protected void validateBeforeInsertOrUpdate(DATAOBJECT dataObject) {
+		if(dataObject == null) throw new RuntimeException("Data object is null");
+	}
+	
 	public void delete(DATAOBJECT dataObject) {
+		validateBeforeDelete(dataObject);
 		getRepository().delete_(dataObject);
+	}
+	
+	protected void validateBeforeDelete(DATAOBJECT dataObject) {
+		if(dataObject == null) throw new RuntimeException("Data object is null");
 	}
 	
 	public DATAOBJECT findById(Object id) {
