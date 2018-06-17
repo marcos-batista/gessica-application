@@ -1,14 +1,16 @@
 package com.agroall.gessica.dataobjects;
 
-import java.util.Calendar;
-
 public class Venda {
 	
 	private String codigo;
-	private Calendar data;
+	private Long timestampVenda;
 	private Double desconto;
 	
 	private Cliente cliente;
+	
+	public Venda() {
+		this.desconto = 0d;
+	}
 	
 	public String getCodigo() {
 		return codigo;
@@ -18,12 +20,12 @@ public class Venda {
 		this.codigo = codigo;
 	}
 	
-	public Calendar getData() {
-		return data;
+	public Long getTimestampVenda() {
+		return timestampVenda;
 	}
 	
-	public void setData(Calendar data) {
-		this.data = data;
+	public void setTimestampVenda(Long timestampVenda) {
+		this.timestampVenda = timestampVenda;
 	}
 	
 	public Double getDesconto() {

@@ -21,6 +21,7 @@ public abstract class ServiceImpl<DATAOBJECT> implements Service<DATAOBJECT> {
 	public abstract DATAOBJECT factoryNewDataObject();
 	
 	public DATAOBJECT insert(DATAOBJECT dataObject) {
+		validateBeforeInsert(dataObject);
 		return getRepository().insert_(dataObject);
 	}
 	
@@ -29,6 +30,7 @@ public abstract class ServiceImpl<DATAOBJECT> implements Service<DATAOBJECT> {
 	}
 	
 	public DATAOBJECT update(DATAOBJECT dataObject) {
+		validateBeforeUpdate(dataObject);
 		return getRepository().update_(dataObject);
 	}
 	
