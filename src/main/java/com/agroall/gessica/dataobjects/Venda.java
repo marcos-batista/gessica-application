@@ -4,13 +4,8 @@ public class Venda {
 	
 	private String codigo;
 	private Long data;
-	private Double desconto;
 	
 	private Cliente cliente;
-	
-	public Venda() {
-		this.desconto = 0d;
-	}
 	
 	public String getCodigo() {
 		return codigo;
@@ -26,14 +21,6 @@ public class Venda {
 	
 	public void setData(Long data) {
 		this.data = data;
-	}
-	
-	public Double getDesconto() {
-		return desconto;
-	}
-	
-	public void setDesconto(Double desconto) {
-		this.desconto = desconto;
 	}
 	
 	public Cliente getCliente() {

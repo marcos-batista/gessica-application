@@ -36,7 +36,8 @@ public class ItemVenda {
 	public void setPrecoCalculado(Double precoCalculado) {}
 	
 	protected void calculatePreco() {
-		this.precoCalculado = (this.precoCalculado * this.quantidadeProdutos);
+		if(this.precoItem == null) { this.precoCalculado = null; return; }
+		this.precoCalculado = (this.precoItem * this.quantidadeProdutos);
 	}
 	
 }
