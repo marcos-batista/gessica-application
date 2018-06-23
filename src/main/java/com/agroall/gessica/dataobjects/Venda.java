@@ -3,7 +3,7 @@ package com.agroall.gessica.dataobjects;
 public class Venda {
 	
 	private String codigo;
-	private Long timestampVenda;
+	private Long data;
 	private Double desconto;
 	
 	private Cliente cliente;
@@ -20,12 +20,12 @@ public class Venda {
 		this.codigo = codigo;
 	}
 	
-	public Long getTimestampVenda() {
-		return timestampVenda;
+	public Long getData() {
+		return data;
 	}
 	
-	public void setTimestampVenda(Long timestampVenda) {
-		this.timestampVenda = timestampVenda;
+	public void setData(Long data) {
+		this.data = data;
 	}
 	
 	public Double getDesconto() {

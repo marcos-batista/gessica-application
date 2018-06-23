@@ -53,7 +53,6 @@ public class FakeRepository implements Repository {
 	@Override
 	@SuppressWarnings("unchecked")
 	public <DATAOBJECT> DATAOBJECT findById_(Object id) {
-		//if(getDataObjectCollection().isEmpty()) return null;
 		Collection<? extends Persistent<?>> dataObjectCollection = getDataObjectCollection();
 		Persistent<?> dataObject = dataObjectCollection.stream().filter(o -> o.getId().equals(id)).findFirst().get();
 		return (DATAOBJECT) dataObject;
@@ -62,65 +61,38 @@ public class FakeRepository implements Repository {
 	@Override
 	@SuppressWarnings("unchecked")
 	public <DATAOBJECT> DATAOBJECT update_(DATAOBJECT dataObject) {
-		
 		setDataObjectScope((Persistent<Integer>) dataObject);
-		
-		Persistent<?> oldDataObjectPersistent = findById_(getDataObjectScope().getId());
-		Persistent<?> newDataObjectPersistent = getDataObjectScope();
-		
+		Persistent<?> persistedDataObject = findById_(getDataObjectScope().getId());
+		Persistent<?> transientDataObject = getDataObjectScope();
 		try
 		{
-			update(oldDataObjectPersistent, newDataObjectPersistent);
+			update(persistedDataObject, transientDataObject);
 		}
-		catch (IllegalArgumentException e) {
+		catch(IllegalArgumentException | IllegalAccessException | NoSuchMethodException | SecurityException | InvocationTargetException e)
+		{
 			e.printStackTrace();
 		}
-		catch (IllegalAccessException e) {
-			e.printStackTrace();
-		}
-		catch (NoSuchMethodException e) {
-			e.printStackTrace();
-		}
-		catch (SecurityException e) {
-			e.printStackTrace();
-		}
-		catch (InvocationTargetException e) {
-			e.printStackTrace();
-		}
-		
 		resetDataObjectScope();
-		return (DATAOBJECT) oldDataObjectPersistent;
-		
+		return (DATAOBJECT) persistedDataObject;
 	}
 	
 	protected <DATAOBJECT extends Persistent<?>> void update(DATAOBJECT oldDataObject, DATAOBJECT newDataObject) throws IllegalArgumentException, IllegalAccessException, NoSuchMethodException, SecurityException, InvocationTargetException
 	{
 		Class<? extends Object> oldDataObjectClass = oldDataObject.getClass();
 		Class<? extends Object> newDataObjectClass = newDataObject.getClass();
-		
 		Method[] methods = newDataObjectClass.getMethods();
 		for (Method method : methods) {
-			
 			String methodName = method.getName();
 			
 			boolean isGetterMethod = methodName.startsWith("get");
 			if(!isGetterMethod) continue;
-			
-			if
-			(
-				"getClass".equals(methodName) ||
-				"getId".equals(methodName)
-			)
-			{ continue; }
+			if("getClass".equals(methodName) ||"getId".equals(methodName)){ continue; }
 			
 			Method getterMethod = method;
 			Object newValue = getterMethod.invoke(newDataObject);
-			
 			Method setterMethod = oldDataObjectClass.getMethod((methodName.replace("get", "set")), newValue.getClass());
 			setterMethod.invoke(oldDataObject, newValue);
-			
 		}
-		
 	}
 	
 	@Override

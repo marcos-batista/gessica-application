@@ -1,19 +1,15 @@
 package com.agroall.gessica.dataobjects;
 
-import java.util.Calendar;
-
-import com.agroall.gessica.dataobjects.Produto;
-
 public class ProdutoInsumo extends Produto {
 	
-	private Calendar dataValidade;
+	private Long dataValidade;
 	private boolean agrotoxico;
 	
-	public Calendar getDataValidade() {
+	public Long getDataValidade() {
 		return dataValidade;
 	}
 	
-	public void setDataValidade(Calendar dataValidade) {
+	public void setDataValidade(Long dataValidade) {
 		this.dataValidade = dataValidade;
 	}
 	

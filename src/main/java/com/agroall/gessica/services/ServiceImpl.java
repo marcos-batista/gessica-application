@@ -60,9 +60,7 @@ public abstract class ServiceImpl<DATAOBJECT> implements Service<DATAOBJECT> {
 	}
 	
 	protected final void disableOperation(DATAOBJECT dataObject) {
-		if(dataObject == null) {
-			dataObject = factoryNewDataObject();
-		}
+		if(dataObject == null) {dataObject = factoryNewDataObject();}
 		throw new RuntimeException(
 			"This operation is not enabled for objects of type " +
 			dataObject.getClass().getSimpleName()
