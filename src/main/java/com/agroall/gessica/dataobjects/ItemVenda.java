@@ -9,6 +9,7 @@ public class ItemVenda {
 	public ItemVenda() {
 		this.quantidadeProdutos = 0;
 		this.precoItem = 0d;
+		this.precoCalculado = resolvePrecoCalculado();
 	}
 	
 	public int getQuantidadeProdutos() {
@@ -17,7 +18,7 @@ public class ItemVenda {
 	
 	public void setQuantidadeProdutos(int quantidadeProdutos) {
 		this.quantidadeProdutos = quantidadeProdutos;
-		calculatePreco();
+		this.precoCalculado = resolvePrecoCalculado();
 	}
 	
 	public Double getPrecoItem() {
@@ -26,18 +27,21 @@ public class ItemVenda {
 	
 	public void setPrecoItem(Double precoItem) {
 		this.precoItem = precoItem;
-		calculatePreco();
+		this.precoCalculado = resolvePrecoCalculado();
 	}
 	
 	public Double getPrecoCalculado() {
 		return precoCalculado;
 	}
 	
-	public void setPrecoCalculado(Double precoCalculado) {}
+	public void setPrecoCalculado(Double precoCalculado) {
+		this.precoCalculado = resolvePrecoCalculado();
+	}
 	
-	protected void calculatePreco() {
-		if(this.precoItem == null) { this.precoCalculado = null; return; }
+	protected Double resolvePrecoCalculado() {
+		if(this.precoItem == null) { this.precoCalculado = null; return null;}
 		this.precoCalculado = (this.precoItem * this.quantidadeProdutos);
+		return this.precoCalculado;
 	}
 	
 }
