@@ -18,7 +18,16 @@ public class ProdutoEstoque extends Produto {
 	}
 	
 	public void setQuantidadeTotalizada(long quantidadeTotalizada) {
-		this.quantidadeTotalizada = quantidadeTotalizada;
+		this.quantidadeTotalizada = quantidadeTotalizada < 0 ? 0 : quantidadeTotalizada;
 	}
 	
+	public void creditar(int quantidade) {
+		this.quantidadeAtual += quantidade;
+		this.quantidadeTotalizada += quantidade;
+	}
+	
+	public void debitar(int quantidade) {
+		this.quantidadeAtual -= quantidade;
+	}
+
 }
